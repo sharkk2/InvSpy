@@ -1,0 +1,11 @@
+name: InvSpy
+version: '1.0'
+main: org.invspy.InvSpy
+api-version: '1.21'
+authors: [ sharkk2 ]
+description: Allows players to search other players' inventories
+commands:
+  checkinv:
+    description: Check a player's inventory
+    usage: /<command> <player>
+    aliases: [inv, inventory]
