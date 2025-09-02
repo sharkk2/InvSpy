@@ -7,6 +7,7 @@ import org.bukkit.Bukkit
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.event.ClickEvent
 import org.bukkit.ChatColor
+import org.bukkit.Sound
 
 object Request {
     private val pending = mutableMapOf<UUID, CompletableFuture<Boolean>>()
@@ -28,6 +29,8 @@ object Request {
                 .append(allow).append(Component.text(" | "))
                 .append(deny)
         )
+        player.playSound(player.location, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f)
+
 
         Bukkit.getScheduler().runTaskLater(
             Bukkit.getPluginManager().getPlugin("InvSpy")!!,

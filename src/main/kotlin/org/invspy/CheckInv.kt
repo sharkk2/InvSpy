@@ -35,7 +35,6 @@ class CheckInv : CommandExecutor {
                 null  -> sender.sendMessage("${ChatColor.RED}${plr.name} did not respond to your search request")
             }
         }
-
         return true
     }
 
