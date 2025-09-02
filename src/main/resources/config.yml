@@ -1,0 +1,29 @@
+### InvSpy settings
+
+op_bypass_request: true
+# If true, Operators (OPs) can search any player's inventory instantly (no request needed).
+
+no_request: false
+# If true, all players can search inventories without asking for permission
+# If false, non-OP players need to send a request (unless close_range rules apply).
+
+close_range: false
+# If true, non-OP players must be within {block_range} blocks of the target player 
+# to search their inventory.
+
+block_range: 8
+# The maximum distance (in blocks) a player must be within to search another player's inventory. 
+# Only works if close_range is set to true.
+
+close_range_request_bypass: false
+# If true, a player in close range to the target player doesn't need permission to search their inventory.
+
+hidden_items: ['']
+# Items listed here will NOT be visible in inventory searches. 
+# Example: ['diamond', 'command_block', 'apple']
+
+op_hidden_items_bypass: true
+# If true, Operators can see hidden items when searching.
+
+invsearch_op_only: false
+# If true, players need to be an operator to use the "/checkinv" command

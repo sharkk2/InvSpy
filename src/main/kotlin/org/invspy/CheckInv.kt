@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.Bukkit
 import org.bukkit.inventory.Inventory
-import kotlin.math.abs
+import org.bukkit.inventory.PlayerInventory
 
 class CheckInv : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
@@ -27,12 +27,24 @@ class CheckInv : CommandExecutor {
             sender.sendMessage("${ChatColor.RED}${args[0]} is not online")
             return true
         }
-        val size = plr.inventory.size
-        val nearest = ((size + 8) / 9) * 9
-        val safeSize = nearest.coerceIn(9, 54)
-        val invui: Inventory = Bukkit.createInventory(null, safeSize, Component.text("${plr.name}'s inventory"))
-        invui.contents = plr.inventory.contents
-        sender.openInventory(invui)
+
+        Request.requestPlayer(plr, sender, 20).thenAccept { result ->
+            when (result) {
+                true  -> openInventory(sender, plr)
+                false -> sender.sendMessage("${ChatColor.RED}${plr.name} has denied your search request")
+                null  -> sender.sendMessage("${ChatColor.RED}${plr.name} did not respond to your search request")
+            }
+        }
+
         return true
+    }
+
+    fun openInventory(player: Player, target: Player) {
+        var size = target.inventory.size
+        val nearest = ((size + 8) / 9) * 9
+        size = nearest.coerceIn(9, 54)
+        val invui: Inventory = Bukkit.createInventory(null, size, Component.text("${target.name}'s inventory"))
+        invui.contents = target.inventory.contents
+        target.openInventory(invui)
     }
 }
