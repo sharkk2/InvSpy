@@ -25,7 +25,7 @@ object Request {
             })
 
         player.sendMessage(
-            Component.text("${ChatColor.YELLOW}${requester.name}${ChatColor.RESET} is requesting you to allow them to search your inventory\n${ChatColor.GRAY}You have $timeoutSec seconds to respond\n")
+            Component.text("${ChatColor.YELLOW}${requester.name}${ChatColor.RESET} requests to search your inventory\n${ChatColor.GRAY}You have $timeoutSec seconds to respond\n")
                 .append(allow).append(Component.text(" | "))
                 .append(deny)
         )
@@ -49,5 +49,9 @@ object Request {
         if (!future.isDone) {
             future.complete(result)
         }
+    }
+
+    fun hasRequest(player: Player): Boolean {
+        return pending.containsKey(player.uniqueId)
     }
 }

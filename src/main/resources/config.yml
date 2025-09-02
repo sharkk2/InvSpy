@@ -18,9 +18,9 @@ block_range: 8
 close_range_request_bypass: false
 # If true, a player in close range to the target player doesn't need permission to search their inventory.
 
-hidden_items: ['']
+hidden_items: []
 # Items listed here will NOT be visible in inventory searches. 
-# Example: ['diamond', 'command_block', 'apple']
+# Example: ['diamond', 'command_block', 'apple'] *case-sensitive, needs to be in this syntax ['',''], only item/block ids
 
 op_hidden_items_bypass: true
 # If true, Operators can see hidden items when searching.

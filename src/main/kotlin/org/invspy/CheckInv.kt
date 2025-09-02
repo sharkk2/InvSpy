@@ -28,6 +28,12 @@ class CheckInv : CommandExecutor {
             return true
         }
 
+        if (Request.hasRequest(plr)) {
+            sender.sendMessage("${ChatColor.RED}${plr.name} already has a pending request")
+            return true
+        }
+
+        sender.sendMessage("A search request has been sent to ${ChatColor.YELLOW}${plr.name}\n${ChatColor.GRAY}Request timeouts in 20 seconds")
         Request.requestPlayer(plr, sender, 20).thenAccept { result ->
             when (result) {
                 true  -> openInventory(sender, plr)
@@ -42,8 +48,8 @@ class CheckInv : CommandExecutor {
         var size = target.inventory.size
         val nearest = ((size + 8) / 9) * 9
         size = nearest.coerceIn(9, 54)
-        val invui: Inventory = Bukkit.createInventory(null, size, Component.text("${target.name}'s inventory"))
+        val invui: Inventory = Bukkit.createInventory(null, size, Component.text("${target.name}'s inventory (InvSpy)"))
         invui.contents = target.inventory.contents
-        target.openInventory(invui)
+        player.openInventory(invui)
     }
 }
