@@ -1,4 +1,4 @@
-### InvSpy settings
+### InvSpy settings ###
 
 op_bypass_request: true
 # If true, Operators (OPs) can search any player's inventory instantly (no request needed).
