@@ -7,6 +7,9 @@ no_request: false
 # If true, all players can search inventories without asking for permission
 # If false, non-OP players need to send a request (unless close_range rules apply).
 
+request_timeout: 20
+# The time the player has "in seconds" to accept or deny an inventory search request
+
 close_range: false
 # If true, non-OP players must be within {block_range} blocks of the target player 
 # to search their inventory.
@@ -20,7 +23,7 @@ close_range_request_bypass: false
 
 hidden_items: []
 # Items listed here will NOT be visible in inventory searches. 
-# Example: ['diamond', 'command_block', 'apple'] *case-sensitive, needs to be in this syntax ['',''], only item/block ids
+# Example: ['diamond', 'command_block', 'apple'] *case-insensitive, needs to be in this syntax ['',''], only item/block ids
 
 op_hidden_items_bypass: true
 # If true, Operators can see hidden items when searching.

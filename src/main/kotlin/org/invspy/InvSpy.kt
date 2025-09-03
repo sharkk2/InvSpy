@@ -8,7 +8,7 @@ class InvSpy : JavaPlugin() {
     override fun onEnable() {
         logger.info("Loading")
         saveDefaultConfig()
-        getCommand("checkinv")?.setExecutor(CheckInv())
+        getCommand("checkinv")?.setExecutor(CheckInv(this))
         server.pluginManager.registerEvents(Events(), this)
         logger.info("Loaded")
     }
